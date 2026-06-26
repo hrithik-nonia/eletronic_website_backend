@@ -1,0 +1,19 @@
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# Runtime/user-uploaded files (images, not code)
+app/uploads/
+uploades/
+
+# json data
+app/data/product_data.json
+app/data/order_data.json
+app/data/category_data.json
+
+# Environment variables (agar future mein banao to)
+.env
