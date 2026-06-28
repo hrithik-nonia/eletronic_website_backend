@@ -6,8 +6,11 @@ from fastapi import UploadFile, HTTPException
 # ----------imports for admin----------
 from app.repository.product_repository import add_product
 
+
 # ----------imports for user----------
 from app.repository.product_repository import get_all_products
+
+
 
 
 # ----------admin functions----------
@@ -51,6 +54,28 @@ def get_products_count() -> int:
     """Returns the total number of products."""
     products = get_all_products()
     return len(products)
+
+
+# get active products count
+def get_active_products_count() -> int:
+    """Returns the number of active products."""
+    products = get_all_products()
+    count =0
+    for p in products:
+        if p.get("stock") >0:
+            count +=1
+    return count
+
+# get low stock products count
+def get_low_stock_products_count() -> int:
+    """Returns the number of products with stock less than 10."""
+    products = get_all_products()
+    count =0
+    for p in products:
+        if p.get("stock") < 10:
+            count +=1
+    return count
+
 
 # ----------user functions----------
 # fliter product by sale price
