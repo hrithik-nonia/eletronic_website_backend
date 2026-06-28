@@ -24,3 +24,8 @@ def add_product(product: dict) -> dict:
     products.append(product)
     write_products(products)
     return product
+
+
+# get all peoduct to show
+def get_all_products() -> list:
+    return read_products()
