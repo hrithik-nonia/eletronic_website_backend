@@ -77,6 +77,11 @@ def get_low_stock_products_count() -> int:
     return count
 
 
+# get all products
+def service_get_all_products() -> list :
+    return get_all_products()
+    
+
 # ----------user functions----------
 # fliter product by sale price
 def get_products_on_sale(skip: int = 0, limit: int = 10) -> list:

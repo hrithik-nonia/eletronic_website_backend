@@ -8,6 +8,7 @@ from app.services.product_services import create_product_with_image
 from app.services.product_services import get_products_count
 from app.services.product_services import get_active_products_count
 from app.services.product_services import get_low_stock_products_count
+from app.services.product_services import service_get_all_products
 
 # ----------imports for user----------
 from app.services.product_services import get_products_on_sale
@@ -42,6 +43,14 @@ def handle_get_low_stock_products() -> int:
         raise HTTPException(status_code=404, detail="No low stock products found")
 
     return low_stock_count
+
+# get all products
+def handle_get_all_products() -> list:
+    products=service_get_all_products()
+    if len(products) == 0:
+        raise HTTPException(status_code=404, detail="No products found")
+
+    return products
 
 # --------------user functions------------------
 def handle_get_sale_products(skip: int = 0, limit: int = 10) -> list:

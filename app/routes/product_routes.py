@@ -8,6 +8,7 @@ from app.controllers.product_controller import handle_create_product
 from app.controllers.product_controller import handle_get_all_products_count
 from app.controllers.product_controller import handle_get_active_products_count
 from app.controllers.product_controller import handle_get_low_stock_products
+from app.controllers.product_controller import handle_get_all_products
 
 # ---------------imports for user------------
 from app.controllers.product_controller import handle_get_sale_products
@@ -37,6 +38,11 @@ def get_active_products_count():
 @router.get("/low_stock_count",tags=["admin routes"])
 def get_low_stock_products():
     return handle_get_low_stock_products()
+
+# get all product 
+@router.get("/all_products", tags=["admin routes"])
+def get_all_products():
+    return handle_get_all_products()
 
 # ---------------user routes---------------
 # get which product in sale
