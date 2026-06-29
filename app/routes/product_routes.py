@@ -41,8 +41,8 @@ def get_low_stock_products():
 
 # get all product 
 @router.get("/all_products", tags=["admin routes"])
-def get_all_products():
-    return handle_get_all_products()
+def get_all_products(skip: int = 0, limit: int = 8):
+    return handle_get_all_products(skip, limit)
 
 # ---------------user routes---------------
 # get which product in sale

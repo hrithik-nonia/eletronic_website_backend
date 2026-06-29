@@ -45,8 +45,8 @@ def handle_get_low_stock_products() -> int:
     return low_stock_count
 
 # get all products
-def handle_get_all_products() -> list:
-    products=service_get_all_products()
+def handle_get_all_products(skip: int = 0, limit: int = 8) -> list:
+    products=service_get_all_products(skip, limit)
     if len(products) == 0:
         raise HTTPException(status_code=404, detail="No products found")
 
@@ -54,5 +54,8 @@ def handle_get_all_products() -> list:
 
 # --------------user functions------------------
 def handle_get_sale_products(skip: int = 0, limit: int = 10) -> list:
-    return get_products_on_sale(skip, limit)
+    products=get_products_on_sale(skip, limit)
+    if len(products) == 0:
+        raise HTTPException(status_code=404, detail="No products found")
+    return products
 

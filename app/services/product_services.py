@@ -78,8 +78,9 @@ def get_low_stock_products_count() -> int:
 
 
 # get all products
-def service_get_all_products() -> list :
-    return get_all_products()
+def service_get_all_products(skip: int = 0, limit: int = 8) -> list :
+    products = get_all_products()
+    return products[skip : skip + limit]
     
 
 # ----------user functions----------
