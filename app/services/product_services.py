@@ -76,9 +76,20 @@ def get_low_stock_products_count() -> int:
             count +=1
     return count
 
+# get out of stock products count
+def get_out_of_stock_products_count() -> int:
+    """Returns the number of products with stock equal to 0."""
+    products = get_all_products()
+    count =0
+    for p in products:
+        if p.get("stock") == 0:
+            count +=1
+    return count
 
-# get all products
-def service_get_all_products(skip: int = 0, limit: int = 8) -> list :
+
+# -------------------admin and user-------------------
+# get all products 
+def service_get_all_products(skip: int = 0, limit: int = 10) -> list :
     products = get_all_products()
     return products[skip : skip + limit]
     

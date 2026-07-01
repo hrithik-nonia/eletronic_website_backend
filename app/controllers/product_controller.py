@@ -8,6 +8,7 @@ from app.services.product_services import create_product_with_image
 from app.services.product_services import get_products_count
 from app.services.product_services import get_active_products_count
 from app.services.product_services import get_low_stock_products_count
+from app.services.product_services import get_out_of_stock_products_count
 from app.services.product_services import service_get_all_products
 
 # ----------imports for user----------
@@ -45,12 +46,21 @@ def handle_get_low_stock_products() -> int:
     return low_stock_count
 
 # get all products
-def handle_get_all_products(skip: int = 0, limit: int = 8) -> list:
+def handle_get_all_products(skip: int = 0, limit: int = 10) -> list:
     products=service_get_all_products(skip, limit)
     if len(products) == 0:
         raise HTTPException(status_code=404, detail="No products found")
 
     return products
+
+# get out of stock products count
+def handle_get_out_of_stock_products() -> int:
+    out_of_stock_count = get_out_of_stock_products_count()
+    
+    if out_of_stock_count == 0:
+        raise HTTPException(status_code=404, detail="No out of stock products found")
+    
+    return out_of_stock_count
 
 # --------------user functions------------------
 def handle_get_sale_products(skip: int = 0, limit: int = 10) -> list:
@@ -59,3 +69,10 @@ def handle_get_sale_products(skip: int = 0, limit: int = 10) -> list:
         raise HTTPException(status_code=404, detail="No products found")
     return products
 
+
+# get all products for user
+def handle_get_all_products_for_user(skip: int = 0, limit: int = 10) -> list:
+    products=service_get_all_products(skip, limit)
+    if len(products) == 0:
+        raise HTTPException(status_code=404, detail="No products found")
+    return products
