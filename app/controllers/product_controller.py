@@ -13,6 +13,9 @@ from app.services.product_services import service_get_all_products
 
 # ----------imports for user----------
 from app.services.product_services import get_products_on_sale
+from app.services.product_services import get_product_by_id
+from app.services.product_services import get_product_by_category
+
 
 
 # --------------admin functions----------------
@@ -69,10 +72,17 @@ def handle_get_sale_products(skip: int = 0, limit: int = 10) -> list:
         raise HTTPException(status_code=404, detail="No products found")
     return products
 
+# get product by id
+def handle_get_product_by_id(product_id: str) -> dict:
+    product=get_product_by_id(product_id)
+    if product is None:
+        raise HTTPException(status_code=404, detail="Product not found")
+    return product
 
-# get all products for user
-def handle_get_all_products_for_user(skip: int = 0, limit: int = 10) -> list:
-    products=service_get_all_products(skip, limit)
+# get product by category
+def handle_get_product_by_category(category: str) -> list:
+    products=get_product_by_category(category)
     if len(products) == 0:
         raise HTTPException(status_code=404, detail="No products found")
     return products
+

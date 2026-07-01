@@ -13,6 +13,10 @@ from app.controllers.product_controller import handle_get_out_of_stock_products
 
 # ---------------imports for user------------
 from app.controllers.product_controller import handle_get_sale_products
+from app.controllers.product_controller import handle_get_product_by_id
+from app.controllers.product_controller import handle_get_product_by_category
+
+
 
 router = APIRouter(prefix="/api/products", tags=["Products"])
 
@@ -60,6 +64,17 @@ def get_sale_products(skip: int = 0, limit: int = 10):
 @router.get("/",tags=["user routes"])
 def get_all_products(skip: int = 0, limit: int = 10):
     return handle_get_all_products(skip, limit)
+
+# get product by id
+@router.get("/{product_id}",tags=["user routes"])
+def get_product_by_id(product_id: str):
+    return handle_get_product_by_id(product_id)
+
+# get product by category
+@router.get("/category/{category}",tags=["user routes"])
+def get_product_by_category(category:str):
+    print(category)
+    return handle_get_product_by_category(category)
 
 
 

@@ -1,3 +1,5 @@
+from gettext import find
+from itertools import product
 import os
 import uuid
 
@@ -104,3 +106,20 @@ def get_products_on_sale(skip: int = 0, limit: int = 10) -> list:
         if p.get("sale_price") not in (None, "", 0)
     ]
     return sale_products[skip : skip + limit]
+
+# get product by id
+def get_product_by_id(product_id:str) -> dict:
+    products = get_all_products()
+    product = next(
+        (p for p in products if p["id"] == product_id),
+        None
+    )
+    return product
+
+# get product by category
+def get_product_by_category(category:str)->list:
+    products=get_all_products()
+    product = list(filter(lambda p : p["category"]==category , products))
+    return product
+
+    
