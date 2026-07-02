@@ -1,7 +1,8 @@
 from fastapi import FastAPI
-from .routes.product_routes import router as r
+from .routes.product_routes import router as product_route
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from .routes.job_portal_routes import router as job_portal_route
 
 # create a instance
 app=FastAPI()
@@ -30,4 +31,8 @@ app.add_middleware(
 async def home():
   return {"msg":"server is running"}
 
-app.include_router(r)
+# product route include
+app.include_router(product_route)
+
+# job portel route include
+app.include_router(job_portal_route)

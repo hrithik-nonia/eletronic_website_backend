@@ -1,0 +1,22 @@
+[
+  {
+    "first_name": "hritik",
+    "last_name": "nonia",
+    "email": "user@example.com",
+    "phone": 6295553913,
+    "position": "string",
+    "start_date": "2026-07-02",
+    "id": "01de011e-7df3-4dfa-8bd5-f0761319c478",
+    "resume": "178e9dd43e714580ace3777d1439ba20.pdf"
+  },
+  {
+    "first_name": "hritik",
+    "last_name": "nonia",
+    "email": "user@example.com",
+    "phone": 6295553913,
+    "position": "string",
+    "start_date": "2026-07-02",
+    "id": "738283ca-b703-465e-9348-bd21bce2d78a",
+    "resume": "c9ef8abd5a004597ab3ab143ff9ec41b.pdf"
+  }
+]
